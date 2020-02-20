@@ -2,7 +2,7 @@
 An open source python script which (_as of now_) can anonymize a MySQL Database.
 
 ## Table Of Content
-- [Getting Started](#Getting%20Started)
+- [Getting Started](#Getting-Started)
 
 ## Getting Started
 lorem
