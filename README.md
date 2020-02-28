@@ -33,9 +33,12 @@ mysql -u Your_Username -pYour_Password < mock_data.sql
 ```
 
 ### Python Library Requirements.
-- a
-- b
-- c
+- art v4.1
+- beautifulsoup4 v4.8.1
+- colorama v0.4.1
+- Faker v2.0.2
+- mysql-connector-python v8.0.17
+- numpy v1.17.2
 
 ## Using AnonyPy
 Before you run AnonyPy you're gonna want to make sure your database is backed up.
