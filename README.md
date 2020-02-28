@@ -1,5 +1,8 @@
 # AnonyPy
+                                   
 An open source python script which (_as of now_) can anonymize a MySQL Database.
+
+![Alt Text](https://media.giphy.com/media/hpXLca0svDLvq0O5tr/giphy.gif)
 
 ## Table Of Content
 - [Getting Started](#Getting-Started)
@@ -7,11 +10,13 @@ An open source python script which (_as of now_) can anonymize a MySQL Database.
     - [Requirements](#python-library-requirements)
 - [Using AnonyPy](#Using-AnonyPy)
 - [Setting up configuration](#Setting-up-configuration)
+    - [fakeMap](#anonymizedatamap)
     - [database](#database)
     - [truncate](#truncate)
     - [custom_queries](#custom_queries)
     - [final_queries](#final_queries)
-    - [table_data](#table_data)
+    - [table_data (data)](#table_data-data)
+    - [table_data (json)](#table_data-json)
 
 
 ## Getting Started
@@ -38,6 +43,27 @@ Make sure you read through your configuration file before running.
 
 
 ## Setting up configuration 
+### anonymizeDataMap
+|key|defintion|
+|---|---|
+|fake_name| returns a fake name (_e.g. John Smith_) |
+|fake_email| returns a fake email addreess (_e.g. JohnSmith124@anonypy.fake_)|
+|fake_phone_number| returns a fake phone number (_e.g. +44(23) 4444 1234_)|
+|fake_first_name| returns a first name (_e.g. John_)|
+|fake_last_name| returns a surname (_e.g. smith_)|
+|fake_location| returns a country (_e.g. France_)|
+|fake_job|returns a job (_e.g. Administrator_)|
+|fake_company_name|returns a fake company name (_e.g. Pierce Group PLC3018_)|
+|fake_random_words|return two random words with an int at the end (_e.g. House_door452_)|
+|fake_paragraph|returns a fake random 10-50 word sentence (_e.g. 'Significant then remember of several another president less all one lawyer reveal late when maintain on through artist artist way step paper send team article know._)|
+|fake_comment|similar to paragraph but returns 1-75 words|
+|fake_password|returns a fake password (_e.g. 9JEgaujaEDQYp4CHa1pMPa0Cm_|
+|fake_html_answer| similar to fake html answer it returns 10-50 words wrapped in <p></p> (_e.g. \<p>Else let free anyone tough case help ever should chair stop explain.\</p>_|
+|fake_words_replace| returns the same total of words with fake words (_e.g. 'Hello World' could be 'cartoon milk')|
+|fake_street| returns a fake street address (_e.g. 72251 Leonard Path_)|
+|fake_us_postcode|returns a fake postcode (_e.g. 61210_)|
+
+
 ### database
 Access the configuration file [`config/settings.json`] 
 **Sample**
@@ -137,4 +163,5 @@ Similar to the data this will anonymize json.
       }
 ```
 
-Looking at the example  `comments` is the table name and instead of `json` is the keyword, `commentsid` is the primary key
+Looking at the example  `comments` is the table name and instead of `json` is the keyword, `commentsid` is the primary key.
+and because the comments on the table follow the same structure I've taken a comment and replaced it with linkable keys from fakeMap

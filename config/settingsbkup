@@ -1,0 +1,58 @@
+{
+  "database": {
+    "host": "localhost",
+    "user": "anony",
+    "password": "pi",
+    "database": "sakila",
+    "dump_path": "Dump"
+  },
+  "truncate": [
+    "payment",
+    "rental"
+  ],
+  "custom_queries": [
+    "UPDATE staff SET password='fg3545fj367676745532rrgf34gfh67th5' WHERE staff_id=1"
+  ],
+    "final_queries": [
+    "Truncate rental"
+  ],
+  "table_data": {
+    "actor": {
+      "data": {
+        "actor_id": "PrimaryKey",
+        "first_name": "fake_first_name",
+        "last_name": "fake_last_name"
+      }
+    },
+    "customer": {
+      "data": {
+        "customer_id": "PrimaryKey",
+        "first_name": "fake_first_name",
+        "last_name": "fake_last_name",
+        "email": "fake_email"
+      }
+    },
+    "staff": {
+      "data": {
+        "staff_id": "PrimaryKey",
+        "first_name": "fake_first_name",
+        "last_name": "fake_last_name",
+        "email": "fake_email"
+      }
+    },
+    "address": {
+      "data": {
+        "address_id": "primarykey",
+        "address": "fake_street",
+        "postal_code": "fake_us_postcode",
+        "phone": "fake_phone_number"
+      }
+    },
+    "comments": {
+      "json": {
+        "commentsid": "primarykey",
+        "comment" : "{\"comment\": {\"liked\": [\"fake_comment\"], \"title\": \"fake_company_name\", \"disliked\": [\"fake_comment\"]}}"
+      }
+    }
+  }
+}
