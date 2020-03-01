@@ -1,10 +1,12 @@
 # AnonyPy
                                    
-An open source python script which (_as of now_) can anonymize a MySQL Database.
+Anonypy is an open source python project which is designed to anonymize a MySql database.
 
 ![Alt Text](https://media.giphy.com/media/hpXLca0svDLvq0O5tr/giphy.gif)
 
 ## Table Of Content
+- [Overview](#overview)
+- [How to contribute](#how-to-contribute)
 - [Getting Started](#Getting-Started)
     - [Prerequisites](#Prerequisites)
     - [Requirements](#python-library-requirements)
@@ -17,10 +19,19 @@ An open source python script which (_as of now_) can anonymize a MySQL Database.
     - [final_queries](#final_queries)
     - [table_data (data)](#table_data-data)
     - [table_data (json)](#table_data-json)
+- [Licence](#license)
 
+## Overview
+This project is to anonymize databases. The purpose is so that you can anonymize your production database so you can use it for development testing.
+AnonyPy would like to anonymize all databases (_SQL, Mongo etc..._) as of now i can anonymize client data replacing identifiable information with 'fake' data.
+
+This project would be useful for you to anonymize a copy of your live data so that you can use it on your development enviroments to test code against a database similary to your production database.
+
+
+## How to contribute
+see the [CONTRIBUTING.md](https://github.com/Jonopoly/AnonyPy/blob/master/CONTRIBUTING.md)
 
 ## Getting Started
-
 
 ### Prerequisites
 Using the sample database you can create a database in MySQL to test the AnonyPy.
@@ -168,3 +179,6 @@ Similar to the data this will anonymize json.
 
 Looking at the example  `comments` is the table name and instead of `json` is the keyword, `commentsid` is the primary key.
 and because the comments on the table follow the same structure I've taken a comment and replaced it with linkable keys from fakeMap
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/Jonopoly/AnonyPy/blob/master/LICENSE) file for details
