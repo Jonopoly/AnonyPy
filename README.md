@@ -22,7 +22,7 @@ Anonypy is an open source python project which is designed to anonymize a MySql 
 - [Licence](#license)
 
 ## Overview
-This project is to anonymize databases. This is so you can anonymize your production database and allows for more accuracy in development testing.
+This project is to anonymize databases. This is so you can anonymize your production database which allows for more accuracy in development testing.
 AnonyPy would like to anonymize all databases (_SQL, Mongo etc..._) currently it only works with MySQL. AnonyPy anonymize's client data replacing identifiable information with 'fake' data.
 
 This project would be useful for you to anonymize a copy of your live data so that you can use it on your development enviroments to test code against a database similary to your production database.
@@ -34,15 +34,13 @@ see the [CONTRIBUTING.md](https://github.com/Jonopoly/AnonyPy/blob/master/CONTRI
 ## Getting Started
 
 ### Prerequisites
-Using the sample database you can create a database in MySQL to test the AnonyPy.
+Using the sample data you can create a database in MySQL to test the AnonyPy.
 You're going to need mysql installed with an account. [You can follow instuctions on MySql website](https://dev.mysql.com/downloads/installer/)
 
-Import the SQL file into MySQL Workbench using the following:
-
+Inside `sample data/` you wil find mock_data.sql you can import it using the follow command line script:
 ```
 mysql -u Your_Username -pYour_Password < mock_data.sql
 ```
-update user set authentication_string=PASSWORD("Liverpool1") where User='root';
 
 ### Python Library Requirements.
 - art v4.1
