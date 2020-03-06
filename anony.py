@@ -10,7 +10,7 @@ init(autoreset=True)
 
 start_time = time()
 
-with open(r'Config\settings.json', 'r') as f:
+with open(r'config/settings.json', 'r') as f:
     configuration = load(f)
 
 print(INTRODUCTION)

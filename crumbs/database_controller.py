@@ -5,7 +5,7 @@ import mysql.connector
 
 class DatabaseBuilder:
     def __init__(self):
-        with open(r'Config\settings.json', 'r') as file:
+        with open(r'config/settings.json', 'r') as file:
             configuration = json.load(file)
 
         my_sql_config = {
