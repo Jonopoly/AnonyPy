@@ -1,6 +1,6 @@
 # Contributing
 
-First of all i'm really glad you're reading this, because I need volunteers to help with development, writing and testing.
+First of all i'm really glad you're reading this, I need volunteers to help with development, writing and testing.
 
 ## Table Of Content
 - [Styling](#styling)
@@ -14,7 +14,7 @@ Ideally I would want you to do the same.
 
 ### Raising an issue
 - **Check whether the bug was already reported** Check issues [link](https://github.com/Jonopoly/AnonyPy/issues)
-- If you you find somebody else is having a similar issue feel free to contribute and useful information
+- If the issue has already been raised please contribute any missing information you feel would be useful.
 - If you are unable to find an open issue addressing the problem, open a new one. Include as much information as you can
 
 ### How to contribute
@@ -22,5 +22,6 @@ Ideally I would want you to do the same.
 ```shell script
 git checkout -b my_custom_branch master
 ```
-- Try to keep commits small as possible
-- Once you're happy with your change make a pull request. (_Following the steps at: [GitHub](https://help.github.com/articles/using-pull-requests/)_)
+- Try to keep commits as small as possible
+- Once you're happy with your change make a pull request for review. (_Following the steps at: [GitHub](https://help.github.com/articles/using-pull-requests/)_)
+********
