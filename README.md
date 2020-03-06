@@ -51,8 +51,9 @@ mysql -u Your_Username -pYour_Password < mock_data.sql
 - numpy v1.17.2
 
 ## Using AnonyPy
-Before you run AnonyPy you're gonna want to make sure your database is backed up.
-Make sure you read through your configuration file before running.
+Before you run AnonyPy ensure your database is backed up. You can find some instructions on backing up your database on the [MySql Website](https://dev.mysql.com/doc/mysql-backup-excerpt/5.7/en/backup-and-recovery.html)
+
+Once you've backed up check your configuration file before running.
 
 
 ## Setting up configuration 
@@ -78,7 +79,8 @@ Make sure you read through your configuration file before running.
 
 
 ### database
-Access the configuration file [`config/settings.json`] 
+The configuration file is located at:   [`config/settings.json`] 
+
 **Sample**
 ```json
   "database": {
@@ -89,12 +91,12 @@ Access the configuration file [`config/settings.json`]
     "dump_path": "Dump"
   }
 ```
-The sample is based on if you install the mock data. Replace the details with the credentials to access your database.
+Here is an example of credentials used to log in to a database. Replace the example credentials with your own to access the database.
 `dump_path` (_optional_) is where you would dump the database if needed.
 
 ### truncate
-if you wish to truncate any tables you would add them here. 
-the sample below will add two tables to the list and each will be truncated one after the other. 
+If you need to truncate any tables you would add them here. 
+The sample below will add two tables to the list and each will be truncated one after the other. 
 
 **sample**
 ```json
@@ -107,7 +109,7 @@ the sample below will add two tables to the list and each will be truncated one 
 ### custom_queries
 **Note:** These queries run before anonymizing.
 
-Here you can run any query you wish. these would run before the anonymizing takes place. In the sample below i wanted to make sure certain users had a certain password.
+Here you can run any query. These will run before the anonymizing takes place. Below is an example of running a query before anonymizing. 
 
 **sample**
 ```json
@@ -119,7 +121,7 @@ Here you can run any query you wish. these would run before the anonymizing take
 ### final_queries
 **Note:** These queries run after anonymizing.
 
-Here i can make any last minute changes. in the sample below i trucnate a table and set a user to have a special email address as he would have an anonymized email address beforehand.
+Here final changes can be made. The sample below shows two queries will be executed after the data is anonymized. 
 
 ```json
     "final_queries": [
@@ -129,7 +131,7 @@ Here i can make any last minute changes. in the sample below i trucnate a table 
 ```
 
 ### table_data (data)
-the table data in the main part of anonypy process. This will use the data and replace the fields based on what is in the value.
+The table data is the main part of Anonypy's process, here you can replace data within the fields of the table. 
 
 **template**
 ```json
@@ -144,13 +146,13 @@ the table data in the main part of anonypy process. This will use the data and r
 ```
 |key|value|
 |---|---|
-|name_of_table|Here you would have the name of the table you wish you anonymize.|
-|data|data is a keyword where you can place the fields in.
-|unique_key_in_table|This is the primarykey or somethingg that is unique on the table. as it used to update WHERE unique_id = ? |
-|field_one, field_two|this would be replaced with the fields you would want to anonymize.|
-|fake_map|this would be replaced with a selection from [fakeMap](#)|
+|name_of_table|Here you would have the name of the table will anonymize.|
+|data|Data is an identifier where you can place your keys and values. 
+|unique_key_in_table|This is the primarykey or something that is unique in the table. It is used to update WHERE unique_id = ? |
+|field_one, field_two|This would be replaced with the fields you want to anonymize.|
+|fake_map|This would be replaced with a selection from [fakeMap](#anonymizedatamap)|
 
-in the sample below
+The sample below shows that the table "actor" has been selected and two fields are replaced with "fake_first_name" and "fake_last_name"
 
 **sample**
 ```json
@@ -165,19 +167,33 @@ in the sample below
 ```
 
 ### table_data (json)
-Similar to the data this will anonymize json.
+Similar to the "table_data (data) " this will anonymize json.
+Below is a sample JSON from `comment` in the `comments` table. The example further down has the `comments` table selected `json` is the identifier AnonyPy will look for.
+The selected of json I want to anonymize are `liked`, `title` and `disliked` these are replaced with `fake_comment` and `fake_sentence` (_[Click here for more fake labels](#anonymizedatamap)_)
+
+**Sample JSON**
+```json
+  "comment" : {
+    "liked": [
+               "Great Movie!, Soundtrack was great!"
+    ],
+    "title": "The movie for me", 
+    "disliked": [
+                  "Original was better!"
+    ]
+         
+  }
+```
 
 **Example**
 ```json
     "comments": {
       "json": {
         "commentsid": "primarykey",
-        "comment" : "{\"comment\": {\"liked\": [\"fake_comment\"], \"title\": \"fake_company_name\", \"disliked\": [\"fake_comment\"]}}"
+        "comment" : "{\"comment\": {\"liked\": [\"fake_comment\"], \"title\": \"fake_sentence\", \"disliked\": [\"fake_comment\"]}}"
       }
 ```
 
-Looking at the example  `comments` is the table name and instead of `json` is the keyword, `commentsid` is the primary key.
-and because the comments on the table follow the same structure I've taken a comment and replaced it with linkable keys from fakeMap
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/Jonopoly/AnonyPy/blob/master/LICENSE) file for details
