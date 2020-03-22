@@ -2,10 +2,19 @@
                                    
 Anonypy is an open source python project which is designed to anonymize a MySql database.
 
+## Overview
+Working as a Junior developer I would test my code against a small database that was created for testing. It would pass all the criteria, failing at the last hurdle when testing against a copy of live data with issues such as; timeout, corrupt old data.
+I came up with this program as a solution to this issue, the software would in theory clone your live data and anonymize it so that it can be used on a development environment.
+
+This project is to anonymize databases. This is so you can anonymize your production database which allows for more accuracy in development testing.
+AnonyPy would like to anonymize all databases (_SQL, Mongo etc..._) currently it only works with MySQL. AnonyPy anonymize's client data replacing identifiable information with 'fake' data.
+
+This project would be useful for you to anonymize a copy of your live data so that you can use it on your development enviroments to test code against a database similary to your production database.
+
+
 ![Alt Text](https://media.giphy.com/media/hpXLca0svDLvq0O5tr/giphy.gif)
 
 ## Table Of Content
-- [Overview](#overview)
 - [How to contribute](#how-to-contribute)
 - [Getting Started](#Getting-Started)
     - [Prerequisites](#Prerequisites)
@@ -20,12 +29,6 @@ Anonypy is an open source python project which is designed to anonymize a MySql 
     - [table_data (data)](#table_data-data)
     - [table_data (json)](#table_data-json)
 - [Licence](#license)
-
-## Overview
-This project is to anonymize databases. This is so you can anonymize your production database which allows for more accuracy in development testing.
-AnonyPy would like to anonymize all databases (_SQL, Mongo etc..._) currently it only works with MySQL. AnonyPy anonymize's client data replacing identifiable information with 'fake' data.
-
-This project would be useful for you to anonymize a copy of your live data so that you can use it on your development enviroments to test code against a database similary to your production database.
 
 
 ## How to contribute
