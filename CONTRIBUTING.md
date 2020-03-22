@@ -10,7 +10,7 @@ If you've got sample data, databases you want me to work with i'd happily includ
 
 **Development**
 
-Currently working through the backlog, any ideas submitted will be added to the Dev board (link). Unassigned tasks in the backlog are free to pick up. 
+Currently working through the backlog, any ideas submitted will be added to the [Dev board](https://github.com/Jonopoly/AnonyPy/projects/1). Unassigned tasks in the backlog are free to pick up. 
 
 ## Table Of Content
 - [Styling](#styling)
