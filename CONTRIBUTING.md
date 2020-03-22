@@ -1,6 +1,16 @@
 # Contributing
 
-First of all i'm really glad you're reading this, I need volunteers to help with development, writing and testing.
+First of all thanks for reading this, you don't need to be a developer to contribute to this project. I am looking
+for a range of skillsets to contribute and input ideas. Including writing up documentation, testing, development and 
+ forwarding any ideas you have for the project, any help at all would be greatly appreciated. 
+
+**Database**
+
+If you've got sample data, databases you want me to work with i'd happily include it with the sample data.
+
+**Development**
+
+Currently working through the backlog, any ideas submitted will be added to the Dev board (link). Unassigned tasks in the backlog are free to pick up. 
 
 ## Table Of Content
 - [Styling](#styling)
