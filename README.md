@@ -53,6 +53,9 @@ mysql -u Your_Username -pYour_Password < mock_data.sql
 - mysql-connector-python v8.0.17
 - numpy v1.17.2
 
+```
+pip install -r requirements.txt
+```
 ## Using AnonyPy
 Before you run AnonyPy ensure your database is backed up. You can find some instructions on backing up your database on the [MySql Website](https://dev.mysql.com/doc/mysql-backup-excerpt/5.7/en/backup-and-recovery.html)
 
