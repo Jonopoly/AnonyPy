@@ -9,6 +9,8 @@ I came up with this program as a solution to this issue, the software would in t
 This project is to anonymize databases. This is so you can anonymize your production database which allows for more accuracy in development testing.
 AnonyPy would like to anonymize all databases (_SQL, Mongo etc..._) currently it only works with MySQL. AnonyPy anonymize's client data replacing identifiable information with 'fake' data.
 
+![Overview of how this works](https://ras-cf-public.s3-eu-west-1.amazonaws.com/images/Slide1.png)
+
 This project would be useful for you to anonymize a copy of your live data so that you can use it on your development enviroments to test code against a database similary to your production database.
 
 
