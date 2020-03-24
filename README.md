@@ -36,6 +36,8 @@ This project would be useful for you to anonymize a copy of your live data so th
 ## How to contribute
 see the [CONTRIBUTING.md](https://github.com/Jonopoly/AnonyPy/blob/master/CONTRIBUTING.md)
 
+Alternatively if you have any feedback or suggestions **Contact me**: [anonypy@JonRussell.co.uk](mailto:anonypy@jonrussell.co.uk)
+
 ## Getting Started
 
 ### Prerequisites
