@@ -8,6 +8,9 @@ from crumbs.anonymizing import modify
 
 init(autoreset=True)
 
+
+
+
 start_time = time()
 
 with open(r'config/settings.json', 'r') as f:
@@ -15,7 +18,10 @@ with open(r'config/settings.json', 'r') as f:
 
 print(INTRODUCTION)
 display_database_information(configuration)
+
+# Small little show the database config settings
 sleep(2)
+
 list_of_functions = [
     lambda: truncate_query(configuration["truncate"]),
     lambda: executable_query("Custom Queries", configuration["custom_queries"]),

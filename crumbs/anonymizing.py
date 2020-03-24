@@ -68,12 +68,10 @@ def get_keys_and_values(config, table, key):
 
 
 def modify(tables):
-    from time import time, sleep
     tprint("Anonymizing Tables", font="cybermedium")
     for table in tables:
         for key in tables[table].keys():
             # get Keys:
-            sleep(1)
             keys, values = get_keys_and_values(tables, table, key)
             if 'data' in key:
                 where_clause = f"WHERE {tables[table]['where_clause']}" if 'where_clause' in tables[table] else ''
