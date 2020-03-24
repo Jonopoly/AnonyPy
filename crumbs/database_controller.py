@@ -5,15 +5,16 @@ import mysql.connector
 
 class DatabaseBuilder:
     def __init__(self):
-        with open(r'config/settings.json', 'r') as file:
+        with open(r"config/settings.json", "r") as file:
             configuration = json.load(file)
 
         my_sql_config = {
-            'user': configuration["database"]["user"],
-            'password': configuration["database"]["password"],
-            'host': configuration["database"]["host"],
-            'database': configuration["database"]["database"],
-            'raise_on_warnings': True}
+            "user": configuration["database"]["user"],
+            "password": configuration["database"]["password"],
+            "host": configuration["database"]["host"],
+            "database": configuration["database"]["database"],
+            "raise_on_warnings": True,
+        }
         self.cnx = mysql.connector.connect(**my_sql_config)
         self.cursor = self.cnx.cursor()
         self.cursor2 = self.cnx.cursor(buffered=True)

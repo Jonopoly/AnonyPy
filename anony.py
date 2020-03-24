@@ -8,12 +8,9 @@ from crumbs.anonymizing import modify
 
 init(autoreset=True)
 
-
-
-
 start_time = time()
 
-with open(r'config/settings.json', 'r') as f:
+with open(r"config/settings.json", "r") as f:
     configuration = load(f)
 
 print(INTRODUCTION)
@@ -26,7 +23,7 @@ list_of_functions = [
     lambda: truncate_query(configuration["truncate"]),
     lambda: executable_query("Custom Queries", configuration["custom_queries"]),
     lambda: modify(configuration["table_data"]),
-    lambda: executable_query("Final Queries", configuration["final_queries"])
+    lambda: executable_query("Final Queries", configuration["final_queries"]),
 ]
 
 for function in list_of_functions:

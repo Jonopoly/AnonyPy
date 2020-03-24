@@ -11,14 +11,16 @@ def fake_word_with_int(num):
 
 
 def slightly_more_unique_company(num):
-    company = f'{fake.company()} {fake.company_suffix()}{fake.random_int(1, 9999)}'
+    company = f"{fake.company()} {fake.company_suffix()}{fake.random_int(1, 9999)}"
     if company not in UniqueCompany:
         UniqueCompany.append(company)
         return company
     else:
         attempts = 0
         while company in UniqueCompany:
-            company = f'{fake.company()} {fake.company_suffix()}{fake.random_int(1, 9999)}'
+            company = (
+                f"{fake.company()} {fake.company_suffix()}{fake.random_int(1, 9999)}"
+            )
             attempts = attempts + 1
         UniqueCompany.append(company)
         print(f"Took {attempts}  attempts to generate unique email.")
@@ -36,14 +38,14 @@ def fake_comment(num):
 
 
 def fake_email_address(num):
-    email = f'{fake.random_letter()}{fake.last_name()}{fake.random_int(1, 99999)}@anony-fake.py'
+    email = f"{fake.random_letter()}{fake.last_name()}{fake.random_int(1, 99999)}@anony-fake.py"
     if email not in uniqueEmails:
         uniqueEmails.append(email)
         return email
     else:
         attempts = 0
         while email in uniqueEmails:
-            email = f'{fake.random_letter()}{fake.last_name()}{fake.random_int(1, 99999)}@anony-fake.py'
+            email = f"{fake.random_letter()}{fake.last_name()}{fake.random_int(1, 99999)}@anony-fake.py"
             attempts = attempts + 1
         uniqueEmails.append(email)
         print(f"Took {attempts}  attempts to generate unique email.")
@@ -59,7 +61,15 @@ def fake_phone_number(num):
 
 
 def fake_password(num):
-    return "{}==".format(fake.password(length=25, special_chars=False, digits=True, upper_case=True, lower_case=True))
+    return "{}==".format(
+        fake.password(
+            length=25,
+            special_chars=False,
+            digits=True,
+            upper_case=True,
+            lower_case=True,
+        )
+    )
 
 
 def fake_html_answer(num):
@@ -88,7 +98,7 @@ def fake_country(num):
 
 
 def fake_words_replace(num):
-    return ' '.join(fake.words(num))
+    return " ".join(fake.words(num))
 
 
 def fake_street_address(num):
@@ -115,5 +125,5 @@ fake_map = {
     "fake_html_answer": fake_html_answer,
     "fake_words_replace": fake_words_replace,
     "fake_street": fake_street_address,
-    "fake_us_postcode": fake_us_postcode
+    "fake_us_postcode": fake_us_postcode,
 }
