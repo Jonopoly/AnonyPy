@@ -1,7 +1,7 @@
 # Changelog
 All notable changes to this project will be documented here.
 
-## [V1.1.0](https://github.com/Jonopoly/AnonyPy/commit/97fd209697c54d6667a79e75b743a1ca60757c9c)
+## [V1.1.0](https://github.com/Jonopoly/AnonyPy/commit/a95af419bdb44453c5788157de0b3e26b863d238) - 26th March -2020
 ### Added
 - Refactored Documentation
 - Reformated code using Black
