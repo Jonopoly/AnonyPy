@@ -12,9 +12,9 @@ init(autoreset=True)
 query = DatabaseBuilder()
 
 
-def anonymize_data_basic(db, where_clause, table, keys, values):
+def anonymize_data_basic(RDB, where_clause, table, keys, values):
     for offset in numpy.arange(0, query.get_count(table), 50000):
-        results = select_query(db, keys, offset, table, where_clause)
+        results = select_query(RDB, keys, offset, table, where_clause)
         if len(results) > 0:
             with tqdm(
                 total=(len(results)),
@@ -45,8 +45,8 @@ def anonymize_data_basic(db, where_clause, table, keys, values):
             break
 
 
-def select_query(db, keys, offset, table, where_clause):
-    if db == "sqlserver":
+def select_query(RDB, keys, offset, table, where_clause):
+    if RDB == "sqlserver":
         results = query.fetch_all(
             f"SELECT {', '.join([i for i in keys])} "
             f"FROM {table} "
@@ -54,7 +54,7 @@ def select_query(db, keys, offset, table, where_clause):
             f"OFFSET {offset} ROWS "
             f"FETCH NEXT 50000 ROWS ONLY"
         )
-    if db == "mysql":
+    if RDB == "mysql":
         results = query.fetch_all(
             f"SELECT {', '.join([i for i in keys])} "
             f"FROM {table} "
@@ -100,7 +100,7 @@ def get_keys_and_values(config, table, key):
     return keys, values
 
 
-def modify(db, tables):
+def modify(RDB, tables):
     tprint("Anonymizing Tables", font="cybermedium")
     for table in tables:
         for key in tables[table].keys():
@@ -112,7 +112,7 @@ def modify(db, tables):
                     if "where_clause" in tables[table]
                     else ""
                 )
-                anonymize_data_basic(db, where_clause, table, keys, values)
+                anonymize_data_basic(RDB, where_clause, table, keys, values)
                 print(f"{Fore.GREEN}Anonymizing {table} complete.\n")
-            if "json" in key and db != "sqlserver":
+            if "json" in key and RDB != "sqlserver":
                 anonymize_json_basic(table, keys, values)
