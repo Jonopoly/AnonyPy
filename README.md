@@ -7,7 +7,7 @@ Working as a Junior developer I would test my code against a small database that
 I came up with this program as a solution to this issue, the software would in theory clone your live data and anonymize it so that it can be used on a development environment.
 
 This project is to anonymize databases. This is so you can anonymize your production database which allows for more accuracy in development testing.
-AnonyPy would like to anonymize all databases (_SQL, Mongo etc..._) currently it only works with MySQL. AnonyPy anonymize's client data replacing identifiable information with 'fake' data.
+AnonyPy would like to anonymize all databases (_Mongo etc..._) currently it only works with MySQL and SqlServer. AnonyPy anonymize's client data replacing identifiable information with 'fake' data.
 
 ![Overview of how this works](https://ras-cf-public.s3-eu-west-1.amazonaws.com/images/Slide1.png)
 
@@ -18,6 +18,7 @@ This project would be useful for you to anonymize a copy of your live data so th
 
 ## Table Of Content
 - [How to contribute](#how-to-contribute)
+- [Change log](#changelog)
 - [Getting Started](#Getting-Started)
     - [Prerequisites](#Prerequisites)
     - [Requirements](#python-library-requirements)
@@ -38,10 +39,13 @@ see the [CONTRIBUTING.md](https://github.com/Jonopoly/AnonyPy/blob/master/CONTRI
 
 Alternatively if you have any feedback or suggestions **Contact me**: [anonypy@JonRussell.co.uk](mailto:anonypy@jonrussell.co.uk)
 
+## Changelog
+see the [CHANGELOG.md](https://github.com/Jonopoly/AnonyPy/blob/master/CHANGELOG.md) for recent updates
+
 ## Getting Started
 
 ### Prerequisites
-Using the sample data you can create a database in MySQL to test the AnonyPy.
+Using the sample data you can create a database in **MySQL** to test the AnonyPy.
 You're going to need mysql installed with an account. [You can follow instuctions on MySql website](https://dev.mysql.com/downloads/installer/)
 
 Inside `sample data/` you wil find mock_data.sql you can import it using the follow command line script:
@@ -99,10 +103,13 @@ The configuration file is located at:   [`config/settings.json`]
     "password": "pi",
     "database": "sakila",
     "dump_path": "Dump"
+    "src":"mysql"
   }
 ```
 Here is an example of credentials used to log in to a database. Replace the example credentials with your own to access the database.
 `dump_path` (_optional_) is where you would dump the database if needed.
+
+`src` should either be `mysql` or `sqlserver` 
 
 ### truncate
 If you need to truncate any tables you would add them here. 

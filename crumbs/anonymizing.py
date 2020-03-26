@@ -12,14 +12,9 @@ init(autoreset=True)
 query = DatabaseBuilder()
 
 
-def anonymize_data_basic(where_clause, table, keys, values):
+def anonymize_data_basic(RDB, where_clause, table, keys, values):
     for offset in numpy.arange(0, query.get_count(table), 50000):
-        results = query.fetch_all(
-            f"SELECT {', '.join([i for i in keys])} "
-            f"FROM {table} "
-            f"{where_clause} limit 50000 "
-            f"offset {offset}"
-        )
+        results = select_query(RDB, keys, offset, table, where_clause)
         if len(results) > 0:
             with tqdm(
                 total=(len(results)),
@@ -48,6 +43,25 @@ def anonymize_data_basic(where_clause, table, keys, values):
                     pbar.update(1)
         else:
             break
+
+
+def select_query(RDB, keys, offset, table, where_clause):
+    if RDB == "sqlserver":
+        results = query.fetch_all(
+            f"SELECT {', '.join([i for i in keys])} "
+            f"FROM {table} "
+            f"ORDER BY {keys[0]} "
+            f"OFFSET {offset} ROWS "
+            f"FETCH NEXT 50000 ROWS ONLY"
+        )
+    if RDB == "mysql":
+        results = query.fetch_all(
+            f"SELECT {', '.join([i for i in keys])} "
+            f"FROM {table} "
+            f"{where_clause} limit 50000 "
+            f"offset {offset}"
+        )
+    return results
 
 
 def anonymize_json_basic(table, keys, values):
@@ -86,7 +100,7 @@ def get_keys_and_values(config, table, key):
     return keys, values
 
 
-def modify(tables):
+def modify(RDB, tables):
     tprint("Anonymizing Tables", font="cybermedium")
     for table in tables:
         for key in tables[table].keys():
@@ -98,7 +112,7 @@ def modify(tables):
                     if "where_clause" in tables[table]
                     else ""
                 )
-                anonymize_data_basic(where_clause, table, keys, values)
+                anonymize_data_basic(RDB, where_clause, table, keys, values)
                 print(f"{Fore.GREEN}Anonymizing {table} complete.\n")
-            if "json" in key:
+            if "json" in key and RDB != "sqlserver":
                 anonymize_json_basic(table, keys, values)

@@ -3,7 +3,6 @@ from colorama import Fore, init
 
 init(autoreset=True)
 
-
 INTRODUCTION = r"""
  $$$$$$\                                          $$$$$$$\            
 $$  __$$\                                         $$  __$$\           
@@ -25,8 +24,9 @@ def display_database_information(config):
 --------------info-------------------
 Host: {Fore.GREEN} {config['database']['host']} {Fore.RESET} 
 Database: {Fore.GREEN} {config['database']['database']} {Fore.RESET}
-Username: {Fore.GREEN} {config['database']['user']} {Fore.RESET}
-Dump Dir: {Fore.GREEN} {config['database']['dump_path']} {Fore.RESET}   
+Source: {Fore.GREEN} {config['database']['src']} {Fore.RESET} 
+User: {Fore.GREEN} {config['database']['user'] if "user" in config['database'] else ""} {Fore.RESET}
+Dump Dir: {Fore.GREEN} {config['database']['dump_path'] if "dump_path" in config['database'] else ""} {Fore.RESET}
 Start time: {Fore.GREEN} {datetime.now().strftime("%H:%M:%S %p")} {Fore.RESET}
 -------------------------------------
     """

@@ -1,3 +1,4 @@
+pyodbc
 mysql
 art==4.1
 beautifulsoup4==4.8.1
