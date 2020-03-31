@@ -64,18 +64,13 @@ def select_query(RDB, keys, offset, table, where_clause):
     return results
 
 
-def anonymize_json_basic(table, keys, values):
+def anonymize_json_basic(RDB,table, keys, values):
     list_of_fake_keys = []
     for word in re.findall("\w+", str(values)):
         if word.startswith("fake") and word not in list_of_fake_keys:
             list_of_fake_keys.append(word)
     for offset in numpy.arange(0, query.get_count(table), 50000):
-        results = query.fetch_all(
-            f"SELECT {', '.join([i for i in keys])} "
-            f"FROM {table} "
-            f"where {keys[1]} is not Null  limit 50000 "
-            f"offset {offset}"
-        )
+        results = select_query(RDB, keys, offset, table, "")
         if len(results) > 0:
             with tqdm(
                 total=(len(results)),
@@ -114,5 +109,5 @@ def modify(RDB, tables):
                 )
                 anonymize_data_basic(RDB, where_clause, table, keys, values)
                 print(f"{Fore.GREEN}Anonymizing {table} complete.\n")
-            if "json" in key and RDB != "sqlserver":
-                anonymize_json_basic(table, keys, values)
+            if "json" in key:
+                anonymize_json_basic(RDB, table, keys, values)
