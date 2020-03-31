@@ -98,7 +98,7 @@ def fake_country(num):
 
 
 def fake_words_replace(num):
-    return " ".join(fake.words(num))
+    return " ".join(fake.words(num)).replace("'", "\\'")
 
 
 def fake_street_address(num):
