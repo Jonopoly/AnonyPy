@@ -1,15 +1,17 @@
 {
   "database": {
-    "host": "LAPTOP-BT7GEO4F",
+    "host": "localhost",
+    "user": "anony",
+    "password": "pi",
     "database": "anonypytest",
     "dump_path": "Dump",
-    "src": "sqlserver"
+    "src": "mysql"
   },
   "truncate": [
     "customer_pictures"
   ],
   "custom_queries": [
-    "UPDATE Customer set customer_active = 1"
+    "UPDATE Customer set active = 1"
   ],
   "final_queries": [
     "UPDATE Customer set customer_address = 'dev@anonypy.test' WHERE customer_id=2001",
