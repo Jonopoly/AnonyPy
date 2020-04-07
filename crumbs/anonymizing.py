@@ -17,8 +17,8 @@ def anonymize_data_basic(RDB, where_clause, table, keys, values):
         results = select_query(RDB, keys, offset, table, where_clause)
         if len(results) > 0:
             with tqdm(
-                total=(len(results)),
-                desc=f"{Fore.CYAN}[{table}]{Fore.RESET}::{Fore.YELLOW}Anonymizing DATA{Fore.RESET}{[i for i in keys[1:]]}{Fore.GREEN}",
+                    total=(len(results)),
+                    desc=f"{Fore.CYAN}[{table}]{Fore.RESET}::{Fore.YELLOW}Anonymizing DATA{Fore.RESET}{[i for i in keys[1:]]}{Fore.GREEN}",
             ) as pbar:
                 for result in results:
                     list_of_fake_data = []
@@ -28,21 +28,40 @@ def anonymize_data_basic(RDB, where_clause, table, keys, values):
                             if result[em + 1] is not None
                             else None
                         )
-                    fields_ = (
-                        "{}={}".format(
-                            first,
-                            "'{}'".format(second.replace("'", "''"))
-                            if second is not None
-                            else "Null",
-                        )
-                        for first, second in zip(keys[1:], list_of_fake_data)
-                    )
+                    fields_ = getFields(RDB, keys, list_of_fake_data)
                     query.update_query(
                         f"UPDATE {table} SET {', '.join(fields_)} WHERE {keys[0]}={result[0]}"
                     )
                     pbar.update(1)
         else:
             break
+
+
+def getFields(RDB, keys, list_of_fake_data):
+    if RDB == "postgresql":
+        fields_ = (
+            # Add to add "" around first one on postgresql
+            '"{}"={}'.format(
+                first,
+                "'{}'".format(second.replace("'", "''"))
+                if second is not None
+                else "Null",
+            )
+            for first, second in zip(keys[1:], list_of_fake_data)
+        )
+    else:
+        fields_ = (
+            # Add to add "" around first one on postgresql
+            '{}={}'.format(
+                first,
+                "'{}'".format(second.replace("'", "''"))
+                if second is not None
+                else "Null",
+            )
+            for first, second in zip(keys[1:], list_of_fake_data)
+        )
+
+    return fields_
 
 
 def select_query(RDB, keys, offset, table, where_clause):
@@ -54,9 +73,9 @@ def select_query(RDB, keys, offset, table, where_clause):
             f"OFFSET {offset} ROWS "
             f"FETCH NEXT 50000 ROWS ONLY"
         )
-    if RDB == "mysql":
+    if RDB == "mysql" or RDB == "postgresql":
         results = query.fetch_all(
-            f"SELECT {', '.join([i for i in keys])} "
+            f"""SELECT {", ".join([f'"{i}"' for i in keys])} """
             f"FROM {table} "
             f"{where_clause} limit 50000 "
             f"offset {offset}"
@@ -64,7 +83,7 @@ def select_query(RDB, keys, offset, table, where_clause):
     return results
 
 
-def anonymize_json_basic(RDB,table, keys, values):
+def anonymize_json_basic(RDB, table, keys, values):
     list_of_fake_keys = []
     for word in re.findall("\w+", str(values)):
         if word.startswith("fake") and word not in list_of_fake_keys:
@@ -73,8 +92,8 @@ def anonymize_json_basic(RDB,table, keys, values):
         results = select_query(RDB, keys, offset, table, "")
         if len(results) > 0:
             with tqdm(
-                total=(len(results)),
-                desc=f"{Fore.CYAN}[{table}]{Fore.RESET}::{Fore.YELLOW}Anonymizing JSON{Fore.RESET}{[i for i in keys[1:]]}{Fore.GREEN}",
+                    total=(len(results)),
+                    desc=f"{Fore.CYAN}[{table}]{Fore.RESET}::{Fore.YELLOW}Anonymizing JSON{Fore.RESET}{[i for i in keys[1:]]}{Fore.GREEN}",
             ) as pbar:
                 for result in results:
                     json_template = values[1]
@@ -109,5 +128,6 @@ def modify(RDB, tables):
                 )
                 anonymize_data_basic(RDB, where_clause, table, keys, values)
                 print(f"{Fore.GREEN}Anonymizing {table} complete.\n")
+            # if "json" in key:
             if "json" in key:
                 anonymize_json_basic(RDB, table, keys, values)
