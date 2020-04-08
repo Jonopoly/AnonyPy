@@ -2,12 +2,22 @@ import json
 
 import mysql.connector
 import pyodbc
+import psycopg2
 
 
 class DatabaseBuilder:
     def __init__(self):
         with open(r"config/settings.json", "r") as file:
             configuration = json.load(file)
+
+        if configuration["database"]["src"] == "postgresql":
+            self.cnx = psycopg2.connect(
+                host=configuration['database']['host'],
+                database=configuration['database']['database'],
+                user=configuration['database']['user'],
+                password=configuration['database']['password']
+            )
+            self.cursor = self.cnx.cursor()
 
         if configuration["database"]["src"] == "sqlserver":
             self.cnx = pyodbc.connect(

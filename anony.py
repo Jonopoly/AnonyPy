@@ -21,7 +21,7 @@ display_database_information(configuration)
 sleep(2)
 
 list_of_functions = [
-    lambda: truncate_query(RDB, configuration["truncate"]),
+    lambda: truncate_query(RDB, configuration["truncate"]), #Works!
     lambda: executable_query(RDB, "Custom Queries", configuration["custom_queries"]),
     lambda: modify(RDB, configuration["table_data"]),
     lambda: executable_query(RDB, "Final Queries", configuration["final_queries"]),

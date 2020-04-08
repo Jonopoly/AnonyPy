@@ -1,13 +1,15 @@
+
 # AnonyPy
                                    
 Anonypy is an open source python project which is designed to anonymize a MySql database.
+![alt text](https://anonypy.jonrussell.co.uk/AllImages.png "Supported")
 
 ## Overview
 Working as a Junior developer I would test my code against a small database that was created for testing. It would pass all the criteria, failing at the last hurdle when testing against a copy of live data with issues such as; timeout, corrupt old data.
 I came up with this program as a solution to this issue, the software would in theory clone your live data and anonymize it so that it can be used on a development environment.
 
 This project is to anonymize databases. This is so you can anonymize your production database which allows for more accuracy in development testing.
-AnonyPy would like to anonymize all databases (_Mongo etc..._) currently it only works with MySQL and SqlServer. AnonyPy anonymize's client data replacing identifiable information with 'fake' data.
+AnonyPy would like to anonymize all databases but currently it only works with MySQL, SqlServer and PostgreSQL. AnonyPy anonymize's client data replacing identifiable information with 'fake' data.
 
 ![Overview of how this works](https://ras-cf-public.s3-eu-west-1.amazonaws.com/images/Slide1.png)
 
@@ -32,6 +34,7 @@ This project would be useful for you to anonymize a copy of your live data so th
     - [table_data (data)](#table_data-data)
     - [table_data (json)](#table_data-json)
 - [Licence](#license)
+- [Acknowledgements](#acknowledgements)
 
 
 ## How to contribute
@@ -214,3 +217,11 @@ The selected of json I want to anonymize are `liked`, `title` and `disliked` the
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/Jonopoly/AnonyPy/blob/master/LICENSE) file for details
+
+## acknowledgements
+[![Foo](https://anonypy.jonrussell.co.uk/jetbrains.png)](https://www.jetbrains.com/?from=AnonyPy)
+
+Thanks to [Jetbrains](https://www.jetbrains.com/?from=AnonyPy) for giving me an All Products Pack Licence.
+
+Thanks to [Ricardo](https://twitter.com/094459) for the shout out in [AWS Open Source News](https://dev.to/aws/aws-open-source-news-and-updates-no-12-35jk)
+

@@ -1,0 +1,49 @@
+{
+  "database": {
+    "host": "localhost",
+    "user": "postgres",
+    "password": "pi",
+    "database": "anonypytest",
+    "dump_path": "Dump",
+    "schema": "testing",
+    "src": "postgresql"
+  },
+  "truncate": [
+    "testing.customer_pics"
+  ],
+  "custom_queries": [
+    "INSERT INTO testing.customer_pics (cust_id, cus_name) VALUES ( 1, 'Anoypy')"
+  ],
+  "final_queries": [
+    "INSERT INTO testing.customer_pics (cust_id, cus_name) VALUES ( 2, 'Anoypy2.jpg')",
+    "INSERT INTO testing.customer_pics (cust_id, cus_name) VALUES ( 3, 'Anoypy3.jpg')"
+  ],
+  "table_data": {
+    "testing.store": {
+      "data": {
+        "store_id": "primarykey",
+        "store_name": "fake_company_name",
+        "store_address": "fake_street",
+        "store_emailAddress": "fake_email",
+        "store_phonenumber": "fake_phone_number",
+        "store_mangerFirstNaame": "fake_first_name",
+        "store_managerLastName": "fake_last_name"
+      },
+      "json": {
+        "store_id": "primarykey",
+        "store_feedback": "{\"comment\": {\"liked\": [\"fake_comment\"], \"title\": \"fake_company_name\", \"disliked\": [\"fake_comment\"]}}"
+      }
+    },
+    "testing.customer": {
+      "data": {
+        "customer_id": "primarykey",
+        "customer_address": "fake_street",
+        "customer_email": "fake_email",
+        "customer_phonenumber": "fake_phone_number",
+        "customer_firstname": "fake_first_name",
+        "customer_lastname": "fake_last_name"
+      }
+    }
+  }
+}
+

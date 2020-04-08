@@ -10,9 +10,7 @@ sql = DatabaseBuilder()
 def truncate_query(RDB, tables):
     tprint("Truncating Tables", font="cybermedium")
     for table in tables:
-        if RDB == "mysql":
-            sql.execute_query_with_disabled_sql_check(f"Truncate {table}")
-        if RDB == "sqlserver":
+        if RDB == "mysql" or RDB == "postgresql":
             sql.sqlServerTruncateQuery(f"Truncate Table {table}")
         print(
             f"{Fore.YELLOW}[TABLE] - {Fore.RESET}{Fore.CYAN}{table}{Fore.RESET} ::{Fore.GREEN} Truncated successfully."
@@ -27,5 +25,6 @@ def executable_query(RDB, title, queries):
         )
         if RDB == "mysql":
             sql.execute_query_with_disabled_sql_check(query)
-        if RDB == "sqlserver":
+        if RDB == "postgresql":
+        # if RDB == "sqlserver":
             sql.sqlServerTruncateQuery(query)
