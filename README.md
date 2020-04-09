@@ -2,6 +2,7 @@
 # AnonyPy
                                    
 Anonypy is an open source python project which is designed to anonymize either a MySQL, Microsoft SQL Server or a PostgreSQL database.
+
 ![alt text](https://anonypy.jonrussell.co.uk/AllImages.png "Supported")
 
 ## Overview
