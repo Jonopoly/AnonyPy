@@ -5,4 +5,4 @@ beautifulsoup4==4.8.1
 colorama==0.4.1
 Faker==2.0.2
 mysql-connector-python==8.0.17
-numpy==1.17.2
+numpy==1.22.0
